@@ -105,14 +105,6 @@ while true; do
                 ./install.sh
                 wait
                 cd "$builddir" || exit
-            # App install
-            echo -e "${YELLOW}Installing Core Applications...${NC}"
-                cd scripts || exit
-                chmod u+x apps.sh
-                ./apps.sh
-                wait
-                cd "$builddir" || exit
-            echo -e "${GREEN}Core Apps Installed successfully!${NC}"
             # Hyprland install
             echo -e "${YELLOW}Installing Hyprland & Dependencies...${NC}"
                 cd scripts || exit

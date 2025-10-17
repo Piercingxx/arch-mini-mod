@@ -59,5 +59,15 @@ ${PKGMGR} nwg-displays
 #Wallpaper
 ${PKGMGR} swww
 
+# Additional Hyprland plugins and configurations
+hyprpm update
+hyprpm reload
+hyprpm add https://github.com/horriblename/hyprgrass
+# hyprpm add https://github.com/hyprwm/hyprland-plugins
+# hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
+
+hyprpm enable hyprgrass
+# hyprpm enable dynamic-cursors
+
 # Success message
 echo -e "\nAll packages installed successfully!"
