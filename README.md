@@ -54,7 +54,8 @@ GREP txt from the Windows 10 install C:\Windows\System32\drivers\43430r0nvram.tx
 
 Once you have those two files you want to put them in /lib/firmware/brcm/ so you should have both /lib/firmware/brcm/brcm43430a0-sdio.bin and /lib/firmware/brcm/brcm43430a0-sdio.txt
 
-Screen Orientation is off by 90 degrees on Debian, does not auto rotate on Arch. Have not tested audio as I am using this with yazi and nvim only.
+Screen Orientation is off by 90 degrees on Debian and Plasma, does not auto rotate on Arch. Just lock rotation.
+Have not tested audio as I am using this with yazi and nvim only.
 
 
 
