@@ -35,6 +35,7 @@ builddir=$(pwd)
     sudo pacman -S reflector --noconfirm
     sudo pacman -S zip unzip gzip tar make wget tar fontconfig --noconfirm
     sudo pacman -Syu linux-firmware --noconfirm
+    sudo pacman -S bluez bluez-utils --noconfirm
 
 # Add Paru
     echo -e "${YELLOW}Installing Paru, Flatpak, & Dependencies...${NC}"
