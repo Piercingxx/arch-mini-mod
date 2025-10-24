@@ -7,10 +7,8 @@ PKGMGR="paru -S --noconfirm"
 # Install core Hyprland components
 ${PKGMGR} hyprland-meta-git
 ${PKGMGR} hyprpaper
-${PKGMGR} hyprlock
 ${PKGMGR} hypridle
 ${PKGMGR} hyprcursor-git
-${PKGMGR} hyprsunset
 
 # Install additional utilities
 ${PKGMGR} wl-clipboard
@@ -26,13 +24,6 @@ ${PKGMGR} notification-daemon
 ${PKGMGR} swaync
 ${PKGMGR} polkit-gnome
 
-# Add screenshot and clipboard utilities
-${PKGMGR} hyprshot
-${PKGMGR} wl-gammarelay
-${PKGMGR} brightnessctl
-${PKGMGR} light
-${PKGMGR} cliphist
-
 # Install audio tools
 ${PKGMGR} pamixer
 ${PKGMGR} cava
@@ -43,31 +34,12 @@ ${PKGMGR} pavucontrol
 # Network and Bluetooth utilities
 ${PKGMGR} networkmanager
 ${PKGMGR} network-manager-applet
-${PKGMGR} bluez
-${PKGMGR} bluez-uti
-${PKGMGR} blueman
 
 # GUI customization tools
 ${PKGMGR} nwg-look
 
-#Gnome customization tool
-${PKGMGR} dconf
-
-#Monitor locator
-${PKGMGR} nwg-displays
-
 #Wallpaper
 ${PKGMGR} swww
-
-# Additional Hyprland plugins and configurations
-hyprpm update
-hyprpm reload
-hyprpm add https://github.com/horriblename/hyprgrass
-# hyprpm add https://github.com/hyprwm/hyprland-plugins
-# hyprpm add https://github.com/virtcode/hypr-dynamic-cursors
-
-hyprpm enable hyprgrass
-# hyprpm enable dynamic-cursors
 
 # Success message
 echo -e "\nAll packages installed successfully!"
