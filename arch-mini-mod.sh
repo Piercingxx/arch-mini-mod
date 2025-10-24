@@ -112,6 +112,13 @@ while true; do
                 ./hyprland-install.sh
                 cd "$builddir" || exit
             echo -e "${GREEN}Hyprland & Dependencies Installed successfully!${NC}"
+            # Set Boot Beep
+            echo -e "${YELLOW}Setting Boot Beep...${NC}"
+                cd scripts || exit
+                chmod u+x set_boot_beep.sh
+                ./set_boot_beep.sh
+                cd "$builddir" || exit
+            echo -e "${GREEN}Boot Beep Set successfully!${NC}"
             # Enable Bluetooth again
                 sudo systemctl start bluetooth
                 systemctl enable bluetooth
@@ -135,6 +142,14 @@ while true; do
                 chmod +x ./nvidia.sh
                 sudo ./nvidia.sh
                 cd "$builddir" || exit
+            ;;
+        "Apply NuVision 8in Tablet Fixes")
+            echo -e "${YELLOW}Applying NuVision 8in Tablet Fixes...${NC}"            
+                cd resources/NuVision-8in-tablet/ || exit
+                chmod +x ./nuvision-tablet-drivers.sh
+                sudo ./nuvision-tablet-drivers.sh
+                cd "$builddir" || exit
+            echo -e "${GREEN}NuVision 8in Tablet Fixes Applied Successfully! Please Reboot!${NC}"
             ;;
         "Optional Surface Kernel")
             echo -e "${YELLOW}Microsoft Surface Kernel...${NC}"            

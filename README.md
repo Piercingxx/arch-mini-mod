@@ -38,24 +38,18 @@ Options include minimal system install, Surface kernel, Hyprland, and reboot.
 
 
 ## Linux on NuVision 8" Tablet TM800W610L
-Wi-Fi
-This tablet has a BCM4356 Wi-Fi/Bluetooth card
-Run
-```
-dmesg | grep brcmfmac
-```
+Wi-Fi and bluetooth drivers are not found in linux kernel by default. I ripped the wifi driver out of the windows install but the bluetooth driver was a royal pain. Had to rebuild it from binary...4 hours of my life gone.
+    - Wi-Fi and Bluetooth both work perfectly now.
 
-If you get a message wanting brcm43430a0-sdio.bin do both parts
-If it wants brcm43430a0-sdio.txt do the second part only.
+Audio is also non-functional out of the box.
 
-brcm43430a0-sdio.bin & brcm43430a0-sdio.txt is in the Resources folder
--or-
-GREP txt from the Windows 10 install C:\Windows\System32\drivers\43430r0nvram.txt and rename it to brcm43430a0-sdio.txt
+Screen orientation is rotated 90° on Debian GNOME and Plasma, and does not auto-rotate on Arch until you install the Wi-Fi driver.
 
-Once you have those two files you want to put them in /lib/firmware/brcm/ so you should have both /lib/firmware/brcm/brcm43430a0-sdio.bin and /lib/firmware/brcm/brcm43430a0-sdio.txt
+**How to fix:**
 
-Screen Orientation is off by 90 degrees on Debian and Plasma, does not auto rotate on Arch. Just lock rotation.
-Have not tested audio as I am using this with yazi and nvim only.
+Just run the `nuvision-tablet-drivers.sh` script. This script is also included in the whiptail menu of the main `arch-mini-mod.sh` installer.
+
+You can run the driver script independently of the rest of the setup process. These drivers will also work on Debian—just modify the script to use `apt` instead of `pacman` and the rest should work fine.
 
 
 
@@ -82,7 +76,6 @@ See the LICENSE file for details.
 ## 🤝 Contributing
 
 Fork, branch, and PR welcome.  
-Keep scripts POSIX‑friendly and avoid hard‑coded paths.
 
 ---
 
