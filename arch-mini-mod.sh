@@ -72,6 +72,7 @@ function menu() {
         --menu "Run Options In Order:" 0 0 0 \
         "Install"                               "Install PiercingXX Arch" \
         "Nvidia Drivers"                        "Install Nvidia Drivers" \
+        "Apply NuVision 8in Tablet Fixes"       "Apply NuVision 8in Tablet Fixes" \
         "Optional Surface Kernel"               "Install Microsoft Surface Kernal" \
         "Reboot System"                         "Reboot the system" \
         "Exit"                                  "Exit the script" 3>&1 1>&2 2>&3
