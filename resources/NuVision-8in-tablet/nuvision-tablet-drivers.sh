@@ -4,6 +4,8 @@
     sudo pacman -S --needed linux-firmware --noconfirm
     sudo pacman -S --needed broadcom-wl-dkms bluez bluez-utils --noconfirm
     sudo pacman -S --needed sof-firmware alsa-utils --noconfirm
+    sudo pacman -S bluez bluez-utils --noconfirm
+    sudo pacman -S iw --noconfirm
 
 # Apply Wifi and Bluetooth drivers
     cp wifi-bluetooth-drivers/* /lib/firmware/brcm/
@@ -12,6 +14,8 @@
 # Reload Wifi kernel module
     sudo modprobe -r brcmfmac
     sudo modprobe brcmfmac
+    sudo ip link set wlan0 up
+    sudo iw wlan0 scan
 # Restart Bluetooth service
     sudo systemctl restart bluetooth
     sudo modprobe -r btusb

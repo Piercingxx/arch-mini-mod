@@ -36,6 +36,7 @@ builddir=$(pwd)
     sudo pacman -S zip unzip gzip tar make wget tar fontconfig --noconfirm
     sudo pacman -Syu linux-firmware --noconfirm
     sudo pacman -S bluez bluez-utils --noconfirm
+    sudo pacman -S iw --noconfirm
 
 # Add Paru
     echo -e "${YELLOW}Installing Paru, Flatpak, & Dependencies...${NC}"
@@ -117,6 +118,12 @@ builddir=$(pwd)
     # Reload Font
     fc-cache -vf
     wait
+
+# OpenSSH
+    echo "# Enabling OpenSSH Service..."
+    sudo pacman -S openssh --noconfirm
+    sudo systemctl enable sshd
+    sudo systemctl start sshd
 
 # Apply Piercing Rice
     echo -e "${YELLOW}Applying PiercingXX Gnome Customizations...${NC}"
