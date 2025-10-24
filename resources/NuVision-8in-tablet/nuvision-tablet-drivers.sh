@@ -9,15 +9,19 @@
     cp wifi-bluetooth-drivers/* /lib/firmware/brcm/
     cp audio-drivers/* /lib/firmware/intel/
 
+# Reload Wifi kernel module
+    sudo modprobe -r brcmfmac
+    sudo modprobe brcmfmac
 # Restart Bluetooth service
     sudo systemctl restart bluetooth
-    echo "Bluetooth firmware fix applied."
+    sudo modprobe -r btusb
+    sudo modprobe btusb
 
 # Audio fix
     # Reload audio kernel modules
     sudo modprobe -r snd_sof_pci snd_sof_acpi_intel_byt snd_sof_acpi snd_sof_intel_atom snd_sof_xtensa_dsp snd_sof snd_intel_sst_acpi snd_intel_sst_core snd_soc_sst_atom_hifi2_platform snd_soc_core snd_pcm
     sudo modprobe snd_sof_pci
-# Restart sound service (PipeWire example)
+# Restart audio service
     systemctl --user restart pipewire
     echo "Audio fix applied."
 
