@@ -59,8 +59,6 @@ builddir=$(pwd)
     paru -S neovim-nightly-bin --noconfirm
     paru -S luarocks --noconfirm
     paru -S lua51 --noconfirm
-    paru -S python --noconfirm
-    paru -S python-pip --noconfirm
 
 # Firewall
     paru -S ufw --noconfirm
@@ -110,10 +108,6 @@ builddir=$(pwd)
     # Enable Bluetooth
         sudo systemctl start bluetooth
         systemctl enable bluetooth
-    # Enable Printer 
-        sudo pacman -S cups gutenprint cups-pdf gtk3-print-backends nmap net-tools cmake meson cpio --noconfirm
-        sudo systemctl enable cups.service
-        sudo systemctl start cups
 
 # Install fonts
     echo "Installing Fonts"
