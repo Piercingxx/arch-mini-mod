@@ -21,6 +21,13 @@
     sudo modprobe -r btusb
     sudo modprobe btusb
 
+# Wifi auto-start fix
+    sudo cp wifi-startup.desktop ~/.config/autostart/
+    sudo cp wifi-startup.sh ~/.scripts/
+    sudo chmod +x ~/.scripts/wifi-startup.sh
+    systemctl --user enable wifi-startup.service
+    systemctl --user start wifi-startup.service
+
 # Audio fix
     # Reload audio kernel modules
     sudo modprobe -r snd_sof_pci snd_sof_acpi_intel_byt snd_sof_acpi snd_sof_intel_atom snd_sof_xtensa_dsp snd_sof snd_intel_sst_acpi snd_intel_sst_core snd_soc_sst_atom_hifi2_platform snd_soc_core snd_pcm
