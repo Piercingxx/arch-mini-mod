@@ -34,8 +34,6 @@
     sudo modprobe snd_sof_pci
 # Restart audio service
     systemctl --user restart pipewire
-    echo "Audio fix applied."
-
 
 # Touchscreen calibration
 # Create hwdb file with correct mount matrix
@@ -49,4 +47,3 @@ EOF
     sudo udevadm trigger /sys/bus/iio/devices/iio:device0
 # Restart iio-sensor-proxy service
     sudo systemctl restart iio-sensor-proxy
-echo "Tablet rotation fix applied. Please reboot if changes do not take effect."
