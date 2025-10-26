@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/$HOME/.scripts/wifi-startup.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=WiFi Startup Script
+Comment=Start WiFi on login
