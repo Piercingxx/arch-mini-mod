@@ -49,10 +49,22 @@ fi
         fi
 
 
-# Install required tools for TUI
-if ! command -v whiptail &> /dev/null; then
-    echo -e "${YELLOW}Installing whiptail...${NC}"
-    pacman -S whiptail --noconfirm
+
+# Ensure gum is installed, auto-install if missing
+if ! command -v gum &> /dev/null; then
+    echo -e "${YELLOW}gum is not installed. Attempting to install...${NC}"
+    if command -v pacman &> /dev/null; then
+        sudo pacman -Sy --noconfirm gum
+    elif command -v apt &> /dev/null; then
+        sudo apt update && sudo apt install -y gum
+    elif command -v dnf &> /dev/null; then
+        sudo dnf install -y gum
+    elif command -v brew &> /dev/null; then
+        brew install gum
+    else
+        echo "Could not determine package manager. Please install 'gum' manually."
+        exit 1
+    fi
 fi
 
 username=$(id -u -n 1000)
@@ -61,21 +73,21 @@ builddir=$(pwd)
 # Cache sudo credentials
 cache_sudo_credentials
 
-# Function to display a message box
+
+# Function to display a message box using gum
 function msg_box() {
-    whiptail --msgbox "$1" 0 0 0
+    gum style --border double --margin "1 2" --padding "1 2" --foreground 212 "$1" | gum pager
 }
 
-# Function to display menu
+# Function to display menu using gum
 function menu() {
-    whiptail --backtitle "GitHub.com/PiercingXX" --title "Main Menu" \
-        --menu "Run Options In Order:" 0 0 0 \
-        "Install"                               "Install PiercingXX Arch" \
-        "Nvidia Drivers"                        "Install Nvidia Drivers" \
-        "Apply NuVision 8in Tablet Fixes"       "Apply NuVision 8in Tablet Fixes" \
-        "Optional Surface Kernel"               "Install Microsoft Surface Kernal" \
-        "Reboot System"                         "Reboot the system" \
-        "Exit"                                  "Exit the script" 3>&1 1>&2 2>&3
+    gum choose \
+        "Install" \
+        "Install Nvidia Drivers" \
+        "Apply NuVision 8in Tablet Fixes" \
+        "Optional Surface Kernel" \
+        "Reboot System" \
+        "Exit"
 }
 # Main menu loop
 while true; do
@@ -86,72 +98,65 @@ while true; do
     case $choice in
         "Install")
             # Turn off sleep/suspend to avoid interruptions
-                gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'false'
-                gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'false'
-                gsettings set org.gnome.settings-daemon.plugins.power idle-dim 'false'
+            gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'false'
+            gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'false'
+            gsettings set org.gnome.settings-daemon.plugins.power idle-dim 'false'
             echo -e "${YELLOW}Installing Essentials...${NC}"
-            # Essentials
-                cd scripts || exit
-                chmod u+x step-1.sh
-                ./step-1.sh
-                wait
-                cd "$builddir" || exit
+            cd scripts || exit
+            chmod u+x step-1.sh
+            ./step-1.sh
+            wait
+            cd "$builddir" || exit
             echo -e "${GREEN}Essentials Installed successfully!${NC}"
-            # Apply Piercing Rice
-                echo -e "${YELLOW}Applying PiercingXX Gnome Customizations...${NC}"
-                rm -rf piercing-dots
-                git clone --depth 1 https://github.com/Piercingxx/piercing-dots.git
-                cd piercing-dots || exit
-                chmod u+x install.sh
-                ./install.sh
-                wait
-                cd "$builddir" || exit
-            # Hyprland install
+            echo -e "${YELLOW}Applying PiercingXX Gnome Customizations...${NC}"
+            rm -rf piercing-dots
+            git clone --depth 1 https://github.com/Piercingxx/piercing-dots.git
+            cd piercing-dots || exit
+            chmod u+x install.sh
+            ./install.sh
+            wait
+            cd "$builddir" || exit
             echo -e "${YELLOW}Installing Hyprland & Dependencies...${NC}"
-                cd scripts || exit
-                chmod u+x hyprland-install.sh
-                ./hyprland-install.sh
-                cd "$builddir" || exit
+            cd scripts || exit
+            chmod u+x hyprland-install.sh
+            ./hyprland-install.sh
+            cd "$builddir" || exit
             echo -e "${GREEN}Hyprland & Dependencies Installed successfully!${NC}"
-            # Enable Bluetooth again
-                sudo systemctl start bluetooth
-                systemctl enable bluetooth
-            # Apply Piercing Gnome Customizations as User
-                cd piercing-dots/scripts || exit
-                ./gnome-customizations.sh
-                wait
-                cd "$builddir" || exit
-            # Replace .bashrc
-                cp -f piercing-dots/resources/bash/.bashrc /home/"$username"/.bashrc
-                source "$HOME/.bashrc"
-            # Clean Up
-                rm -rf piercing-dots
+            sudo systemctl start bluetooth
+            systemctl enable bluetooth
+            cd piercing-dots/scripts || exit
+            ./gnome-customizations.sh
+            wait
+            cd "$builddir" || exit
+            cp -f piercing-dots/resources/bash/.bashrc /home/"$username"/.bashrc
+            source "$HOME/.bashrc"
+            rm -rf piercing-dots
             echo -e "${GREEN}PiercingXX Gnome Customizations Applied successfully!${NC}"
             msg_box "System will reboot now."
             sudo reboot
             ;;
         "Install Nvidia Drivers")
             echo -e "${YELLOW}Installing Nvidia Drivers...${NC}"
-                cd scripts || exit
-                chmod +x ./nvidia.sh
-                sudo ./nvidia.sh
-                cd "$builddir" || exit
+            cd scripts || exit
+            chmod +x ./nvidia.sh
+            sudo ./nvidia.sh
+            cd "$builddir" || exit
             ;;
         "Apply NuVision 8in Tablet Fixes")
-            echo -e "${YELLOW}Applying NuVision 8in Tablet Fixes...${NC}"            
-                cd resources/NuVision-8in-tablet/ || exit
-                chmod +x ./nuvision-tablet-drivers.sh
-                sudo ./nuvision-tablet-drivers.sh
-                cd "$builddir" || exit
+            echo -e "${YELLOW}Applying NuVision 8in Tablet Fixes...${NC}"
+            cd resources/NuVision-8in-tablet/ || exit
+            chmod +x ./nuvision-tablet-drivers.sh
+            sudo ./nuvision-tablet-drivers.sh
+            cd "$builddir" || exit
             echo -e "${GREEN}NuVision 8in Tablet Fixes Applied Successfully! Please Reboot!${NC}"
             ;;
         "Optional Surface Kernel")
-            echo -e "${YELLOW}Microsoft Surface Kernel...${NC}"            
-                cd scripts || exit
-                chmod +x ./surface-kernel.sh
-                sudo ./surface-kernel.sh
-                cd "$builddir" || exit
-                echo -e "${GREEN}Microsoft Kernal Installed. Manually create a Boot Loader Entry then reboot!${NC}"
+            echo -e "${YELLOW}Microsoft Surface Kernel...${NC}"
+            cd scripts || exit
+            chmod +x ./surface-kernel.sh
+            sudo ./surface-kernel.sh
+            cd "$builddir" || exit
+            echo -e "${GREEN}Microsoft Kernal Installed. Manually create a Boot Loader Entry then reboot!${NC}"
             ;;
         "Reboot System")
             echo -e "${YELLOW}Rebooting system in 3 seconds...${NC}"
@@ -165,8 +170,5 @@ while true; do
             ;;
     esac
     # Prompt to continue
-    while true; do
-        read -p "Press [Enter] to continue..." 
-        break
-    done
+    gum confirm "Press [Enter] to continue..." || break
 done

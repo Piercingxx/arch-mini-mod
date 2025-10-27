@@ -46,6 +46,7 @@ builddir=$(pwd)
 
 # Installing more Depends
     echo "# Installing more dependencies..."
+    paru -S bluetuith --noconfirm
     paru -S dconf --noconfirm
     paru -S cpio cmake meson --nocofirm
     paru -S fwupd --noconfirm
@@ -54,6 +55,36 @@ builddir=$(pwd)
     paru -S fuzzel --noconfirm
     paru -S kitty --noconfirm
     paru -S python --noconfirm
+
+#Hyprland and Utilities
+    paru -S --noconfirm hyprland-meta-git
+    paru -S --noconfirm hyprpaper
+    paru -S --noconfirm hypridle
+    paru -S --noconfirm polkit-gnome
+    paru -S --noconfirm wl-clipboard
+    paru -S --noconfirm libdbusmenu-gtk3
+    paru -S --noconfirm waybar
+    paru -S --noconfirm nwg-drawer
+    paru -S --noconfirm fuzzel
+    paru -S --noconfirm wlogout
+    paru -S --noconfirm libnotify
+    paru -S --noconfirm notification-daemon
+    paru -S --noconfirm swaync
+    paru -S --noconfirm hyprshot
+    paru -S --noconfirm wl-gammarelay
+    paru -S --noconfirm brightnessctl
+    paru -S --noconfirm light
+    paru -S --noconfirm cliphist
+    paru -S --noconfirm pamixer
+    paru -S --noconfirm cava
+    paru -S --noconfirm wireplumber
+    paru -S --noconfirm playerctl
+    paru -S --noconfirm pavucontrol
+    paru -S --noconfirm networkmanager
+    paru -S --noconfirm network-manager-applet
+    paru -S --noconfirm nwg-look
+    paru -S --noconfirm dconf
+    paru -S --noconfirm nwg-displays
 
 # Nvim & Depends
     paru -Rs neovim --noconfirm
@@ -92,12 +123,24 @@ builddir=$(pwd)
     paru -S imagemagick --noconfirm
     ya pkg add dedukun/bookmarks
     ya pkg add yazi-rs/plugins:mount
-    ya pack -a grappas/wl-clipboard
+    ya pkg add grappas/wl-clipboard
 
 # Apps to uninstall
     sudo pacman -Rs gnome-console --noconfirm
     sudo pacman -Rs firefox --noconfirm
     sudo pacman -Rs epiphany --noconfirm
+    sudo pacman -Rs gnome-terminal --noconfirm
+    sudo pacman -Rs gnome-software --noconfirm
+    sudo pacman -Rs software-center --noconfirm
+    sudo pacman -Rs dolphin --noconfirm
+    sudo pacman -Rs gnome-maps --noconfirm
+    sudo pacman -Rs gnome-photos --noconfirm
+    sudo pacman -Rs gnome-calendar --noconfirm
+    sudo pacman -Rs gnome-contacts --noconfirm
+    sudo pacman -Rs gnome-music --noconfirm
+    sudo pacman -Rs gnome-text-editor --noconfirm
+    sudo pacman -Rs gnome-weather --noconfirm
+
 
 # Synology
     paru -S synology-drive --noconfirm
@@ -115,6 +158,25 @@ builddir=$(pwd)
     cd "$builddir" || exit
     sudo pacman -S ttf-firacode-nerd --noconfirm
     paru -S ttf-nerd-fonts-symbols --noconfirm
+    sudo pacman -S ttf-nerd-fonts-symbols-mono --noconfirm
+    paru -S noto-fonts-emoji-colrv1 --noconfirm
+
+# Install fonts
+    echo "Installing Fonts"
+    cd "$builddir" || exit
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+    unzip FiraCode.zip -d /home/"$username"/.fonts
+    sudo rm FiraCode.zip
+    sudo pacman -S ttf-firacode-nerd --noconfirm
+    sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
+
+    paru -S ttf-firacode --noconfirm
+    paru -S awesome-terminal-fonts-patched --noconfirm
+    paru -S ttf-ms-fonts --noconfirm
+    paru -S terminus-font-ttf --noconfirm
+
+    paru -S wtype-git --noconfirm
+    paru -S xcursor-simp1e-gruvbox-light --noconfirm
     # Reload Font
     fc-cache -vf
     wait
