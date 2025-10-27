@@ -114,14 +114,8 @@ while true; do
             cd piercing-dots || exit
             chmod u+x install.sh
             ./install.sh
+            cd "$builddir" || exit
             wait
-            cd "$builddir" || exit
-            echo -e "${YELLOW}Installing Hyprland & Dependencies...${NC}"
-            cd scripts || exit
-            chmod u+x hyprland-install.sh
-            ./hyprland-install.sh
-            cd "$builddir" || exit
-            echo -e "${GREEN}Hyprland & Dependencies Installed successfully!${NC}"
             sudo systemctl start bluetooth
             systemctl enable bluetooth
             cd piercing-dots/scripts || exit
