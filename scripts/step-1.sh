@@ -97,17 +97,7 @@ builddir=$(pwd)
     sudo ufw allow OpenSSH
 
 # Install bash stuff
-    paru -S fastfetch --noconfirm
-    paru -S multitail --noconfirm
-    paru -S tree --noconfirm
-    pacman -s bat --noconfirm
-    paru -S bash-completion --noconfirm
-    paru -S trash-cli --noconfirm
-    paru -S fzf --noconfirm
-    paru -S zoxide --noconfirm
-    paru -S starship --noconfirm
-    paru -S exa --noconfirm
-    paru -S jump-bin --noconfirm
+    install_bashrc_support
 
 # Yazi
     paru -S yazi-nightly-bin 
