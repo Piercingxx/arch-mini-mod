@@ -51,8 +51,6 @@ builddir=$(pwd)
     paru -S cpio cmake meson --nocofirm
     paru -S fwupd --noconfirm
     paru -S w3m --noconfirm
-    paru -S dconf --noconfirm
-    paru -S fuzzel --noconfirm
     paru -S kitty --noconfirm
     paru -S python --noconfirm
     paru -S wmctrl xdotool libinput-gestures --noconfirm
@@ -84,8 +82,25 @@ builddir=$(pwd)
     paru -S --noconfirm networkmanager
     paru -S --noconfirm network-manager-applet
     paru -S --noconfirm nwg-look
-    paru -S --noconfirm dconf
     paru -S --noconfirm nwg-displays
+
+# Apps to Install
+    paru -S fwupd --noconfirm
+    paru -S w3m --noconfirm
+    paru -S python --noconfirm
+    paru -S npm --noconfirm
+    paru -S nautilus-open-any-terminal --noconfirm
+    paru -S nautilus-renamer --noconfirm
+    paru -S ulauncher --noconfirm
+    paru -S proton-vpn-gtk-app --noconfirm
+    flatpak install flathub net.waterfox.waterfox -y
+    flatpak install flathub md.obsidian.Obsidian -y
+    flatpak install flathub org.libreoffice.LibreOffice -y
+    flatpak install flathub com.mattjakeman.ExtensionManager -y
+    flatpak install flathub org.qbittorrent.qBittorrent -y
+    flatpak install flathub io.missioncenter.MissionCenter -y
+    flatpak install flathub io.github.shiftey.Desktop -y #Github Desktop
+    flatpak install --noninteractive flathub io.github.realmazharhussain.GdmSettings -y
 
 # Nvim & Depends
     paru -Rs neovim --noconfirm
@@ -101,7 +116,7 @@ builddir=$(pwd)
     install_bashrc_support
 
 # Yazi
-    paru -S yazi-nightly-bin 
+    paru -S yazi-nightly-bin --noconfirm
     paru -S ffmpeg --noconfirm
     paru -S 7zip --noconfirm
     paru -S jq --noconfirm
@@ -138,11 +153,11 @@ builddir=$(pwd)
     #Synology Drive doesnt support wayland so run this...
     QT_QPA_PLATFORM=xcb
 
-# System Control Services
-    echo "# Enabling Bluetooth and Printer services..."
-    # Enable Bluetooth
-        sudo systemctl start bluetooth
-        systemctl enable bluetooth
+# Tailscale
+    paru -S tailscale --noconfirm
+
+# Theme stuffs
+    paru -S papirus-icon-theme-git --noconfirm
 
 # Install fonts
     echo "Installing Fonts"
@@ -151,23 +166,16 @@ builddir=$(pwd)
     paru -S ttf-nerd-fonts-symbols --noconfirm
     sudo pacman -S ttf-nerd-fonts-symbols-mono --noconfirm
     paru -S noto-fonts-emoji-colrv1 --noconfirm
-
-# Install fonts
-    echo "Installing Fonts"
-    cd "$builddir" || exit
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-    unzip FiraCode.zip -d /home/"$username"/.fonts
-    sudo rm FiraCode.zip
-    sudo pacman -S ttf-firacode-nerd --noconfirm
     sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
-
     paru -S ttf-firacode --noconfirm
     paru -S awesome-terminal-fonts-patched --noconfirm
     paru -S ttf-ms-fonts --noconfirm
     paru -S terminus-font-ttf --noconfirm
-
     paru -S wtype-git --noconfirm
     paru -S xcursor-simp1e-gruvbox-light --noconfirm
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+    unzip FiraCode.zip -d /home/"$username"/.fonts
+    sudo rm FiraCode.zip
     # Reload Font
     fc-cache -vf
     wait
@@ -187,3 +195,9 @@ builddir=$(pwd)
     ./install.sh
     cd "$builddir" || exit
     rm -rf piercing-dots
+
+# System Control Services
+    echo "# Enabling Bluetooth and Printer services..."
+    # Enable Bluetooth
+        sudo systemctl start bluetooth
+        sudo systemctl enable bluetooth
