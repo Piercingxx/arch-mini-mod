@@ -34,7 +34,7 @@ builddir=$(pwd)
     echo "# Installing dependencies..."
     sudo pacman -S reflector --noconfirm
     sudo pacman -S zip unzip gzip tar make wget tar fontconfig --noconfirm
-    sudo pacman -Syu linux-firmware linux-firmware-brcm43752 linux-firmware-broadcom --noconfirm
+    sudo pacman -Syu linux-firmware linux-firmware-brcm43752 linux-firmware-broadcom linux-firmware-realtek --noconfirm
     sudo pacman -S bluez bluez-utils --noconfirm
     sudo pacman -S iw --noconfirm
 
