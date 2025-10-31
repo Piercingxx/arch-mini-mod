@@ -108,6 +108,10 @@ builddir=$(pwd)
     paru -S luarocks --noconfirm
     paru -S lua51 --noconfirm
 
+# VScode
+    paru -S visual-studio-code-bin --noconfirm
+    paru -S code-nautilus-git --noconfirm
+
 # Firewall
     paru -S ufw --noconfirm
     sudo ufw allow OpenSSH
@@ -155,6 +159,8 @@ builddir=$(pwd)
 
 # Tailscale
     paru -S tailscale --noconfirm
+    curl -fsSL https://tailscale.com/install.sh | sh
+    wait
 
 # Theme stuffs
     paru -S papirus-icon-theme-git --noconfirm
