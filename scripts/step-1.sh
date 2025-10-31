@@ -55,7 +55,7 @@ builddir=$(pwd)
     paru -S fuzzel --noconfirm
     paru -S kitty --noconfirm
     paru -S python --noconfirm
-    paru -S libinput-gestures --noconfirm
+    paru -S wmctrl xdotool libinput-gestures --noconfirm
 
 #Hyprland and Utilities
     paru -S --noconfirm hyprland-meta-git
