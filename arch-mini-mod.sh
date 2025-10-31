@@ -82,10 +82,10 @@ function msg_box() {
 # Function to display menu using gum
 function menu() {
     gum choose \
-        "Install" \
+        "Install Arch Mini Mod" \
         "Install Nvidia Drivers" \
         "Apply NuVision 8in Tablet Fixes" \
-        "Optional Surface Kernel" \
+        "Apply Surface Kernel" \
         "Reboot System" \
         "Exit"
 }
@@ -96,7 +96,7 @@ while true; do
     echo -e "${GREEN}Welcome ${username}${NC}\n"
     choice=$(menu)
     case $choice in
-        "Install")
+        "Install Arch Mini Mod")
             # Turn off sleep/suspend to avoid interruptions
             gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-ac-type 'false'
             gsettings set org.gnome.settings-daemon.plugins.power sleep-inactive-battery-type 'false'
@@ -144,7 +144,7 @@ while true; do
             cd "$builddir" || exit
             echo -e "${GREEN}NuVision 8in Tablet Fixes Applied Successfully! Please Reboot!${NC}"
             ;;
-        "Optional Surface Kernel")
+        "Apply Surface Kernel")
             echo -e "${YELLOW}Microsoft Surface Kernel...${NC}"
             cd scripts || exit
             chmod +x ./surface-kernel.sh
