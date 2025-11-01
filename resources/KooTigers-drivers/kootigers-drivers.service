@@ -1,0 +1,9 @@
+[Unit]
+Description=KooTigers Touchscreen Driver
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/kootigers-drivers.sh
+
+[Install]
+WantedBy=multi-user.target
