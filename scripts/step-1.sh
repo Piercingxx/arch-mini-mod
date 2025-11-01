@@ -55,6 +55,9 @@ builddir=$(pwd)
     paru -S python --noconfirm
     paru -S wmctrl xdotool libinput-gestures --noconfirm
 
+# Install bash stuff
+    install_bashrc_support
+
 #Hyprland and Utilities
     paru -S --noconfirm hyprland-meta-git
     paru -S --noconfirm hyprpaper
