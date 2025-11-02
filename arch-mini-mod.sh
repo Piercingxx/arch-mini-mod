@@ -84,6 +84,7 @@ function menu() {
     gum choose \
         "Install Arch Mini Mod" \
         "Install Nvidia Drivers" \
+        "Apply KooTigers Touchscreen Driver" \
         "Apply NuVision 8in Tablet Fixes" \
         "Apply Surface Kernel" \
         "Reboot System" \
@@ -135,6 +136,14 @@ while true; do
             chmod +x ./nvidia.sh
             sudo ./nvidia.sh
             cd "$builddir" || exit
+            ;;
+        "Apply KooTigers Touchscreen Driver")
+            echo -e "${YELLOW}Applying KooTigers Touchscreen Driver...${NC}"
+            cd resources/KooTigers-drivers/ || exit
+            chmod +x ./kootigers-drivers.sh
+            sudo ./kootigers-drivers.sh
+            cd "$builddir" || exit
+            echo -e "${GREEN}KooTigers Touchscreen Driver Applied Successfully! Please Reboot!${NC}"
             ;;
         "Apply NuVision 8in Tablet Fixes")
             echo -e "${YELLOW}Applying NuVision 8in Tablet Fixes...${NC}"
