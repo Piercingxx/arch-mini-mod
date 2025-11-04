@@ -126,6 +126,8 @@ while true; do
             cp -f piercing-dots/resources/bash/.bashrc /home/"$username"/.bashrc
             source "$HOME/.bashrc"
             rm -rf piercing-dots
+            # Install bash stuff
+                install_bashrc_support
             echo -e "${GREEN}PiercingXX Gnome Customizations Applied successfully!${NC}"
             msg_box "System will reboot now."
             sudo reboot
