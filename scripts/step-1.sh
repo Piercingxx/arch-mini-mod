@@ -54,6 +54,20 @@ builddir=$(pwd)
     paru -S kitty --noconfirm
     paru -S python --noconfirm
     paru -S wmctrl xdotool libinput-gestures --noconfirm
+    paru -S npm --noconfirm
+    paru -S nautilus-open-any-terminal --noconfirm
+    paru -S nautilus-renamer --noconfirm
+    paru -S ulauncher --noconfirm
+    paru -S proton-vpn-gtk-app --noconfirm
+    flatpak install flathub net.waterfox.waterfox -y
+    flatpak install flathub md.obsidian.Obsidian -y
+    flatpak install flathub org.libreoffice.LibreOffice -y
+    flatpak install flathub com.mattjakeman.ExtensionManager -y
+    flatpak install flathub org.qbittorrent.qBittorrent -y
+    flatpak install flathub io.missioncenter.MissionCenter -y
+    flatpak install flathub io.github.shiftey.Desktop -y #Github Desktop
+    flatpak install --noninteractive flathub io.github.realmazharhussain.GdmSettings -y
+
 
 #Hyprland and Utilities
     paru -S --noconfirm hyprland-meta-git
@@ -84,29 +98,18 @@ builddir=$(pwd)
     paru -S --noconfirm nwg-look
     paru -S --noconfirm nwg-displays
 
-# Apps to Install
-    paru -S fwupd --noconfirm
-    paru -S w3m --noconfirm
-    paru -S python --noconfirm
-    paru -S npm --noconfirm
-    paru -S nautilus-open-any-terminal --noconfirm
-    paru -S nautilus-renamer --noconfirm
-    paru -S ulauncher --noconfirm
-    paru -S proton-vpn-gtk-app --noconfirm
-    flatpak install flathub net.waterfox.waterfox -y
-    flatpak install flathub md.obsidian.Obsidian -y
-    flatpak install flathub org.libreoffice.LibreOffice -y
-    flatpak install flathub com.mattjakeman.ExtensionManager -y
-    flatpak install flathub org.qbittorrent.qBittorrent -y
-    flatpak install flathub io.missioncenter.MissionCenter -y
-    flatpak install flathub io.github.shiftey.Desktop -y #Github Desktop
-    flatpak install --noninteractive flathub io.github.realmazharhussain.GdmSettings -y
 
 # Nvim & Depends
     paru -Rs neovim --noconfirm
     paru -S neovim-nightly-bin --noconfirm
-    paru -S luarocks --noconfirm
+    sudo pacman -S nodejs npm --noconfirm
+    sudo pacman -S ripgrep --noconfirm
     paru -S lua51 --noconfirm
+    paru -S python --noconfirm
+    paru -S python-pip --noconfirm
+    paru -S python-pynvim --noconfirm
+    python3 -m pip install --user --upgrade pynvim
+
 
 # VScode
     paru -S visual-studio-code-bin --noconfirm
@@ -151,7 +154,6 @@ builddir=$(pwd)
     sudo pacman -Rs gnome-text-editor --noconfirm
     sudo pacman -Rs gnome-weather --noconfirm
 
-
 # Synology
     paru -S synology-drive --noconfirm
     #Synology Drive doesnt support wayland so run this...
@@ -170,18 +172,13 @@ builddir=$(pwd)
     cd "$builddir" || exit
     sudo pacman -S ttf-firacode-nerd --noconfirm
     paru -S ttf-nerd-fonts-symbols --noconfirm
-    sudo pacman -S ttf-nerd-fonts-symbols-mono --noconfirm
     paru -S noto-fonts-emoji-colrv1 --noconfirm
     sudo pacman -S ttf-jetbrains-mono-nerd --noconfirm
-    paru -S ttf-firacode --noconfirm
     paru -S awesome-terminal-fonts-patched --noconfirm
     paru -S ttf-ms-fonts --noconfirm
     paru -S terminus-font-ttf --noconfirm
     paru -S wtype-git --noconfirm
     paru -S xcursor-simp1e-gruvbox-light --noconfirm
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-    unzip FiraCode.zip -d /home/"$username"/.fonts
-    sudo rm FiraCode.zip
     # Reload Font
     fc-cache -vf
     wait
