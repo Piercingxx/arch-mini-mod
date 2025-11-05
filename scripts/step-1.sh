@@ -98,7 +98,6 @@ builddir=$(pwd)
     paru -S --noconfirm nwg-look
     paru -S --noconfirm nwg-displays
 
-
 # Nvim & Depends
     paru -Rs neovim --noconfirm
     paru -S neovim-nightly-bin --noconfirm
@@ -109,7 +108,6 @@ builddir=$(pwd)
     paru -S python-pip --noconfirm
     paru -S python-pynvim --noconfirm
     python3 -m pip install --user --upgrade pynvim
-
 
 # VScode
     paru -S visual-studio-code-bin --noconfirm
@@ -135,8 +133,11 @@ builddir=$(pwd)
     paru -S resvg --noconfirm
     paru -S imagemagick --noconfirm
     ya pkg add dedukun/bookmarks
+    ya pkg add dedukun/relative-motions
     ya pkg add yazi-rs/plugins:mount
     ya pkg add grappas/wl-clipboard
+    ya pkg add yazi-rs/plugins:chmod
+    ya pkg add yazi-rs/plugins:smart-enter
 
 # Apps to uninstall
     sudo pacman -Rs gnome-console --noconfirm

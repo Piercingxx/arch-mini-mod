@@ -90,7 +90,8 @@ Fork, branch, and PR welcome.
 
 ---
 
-## 📞 Support
+## 📞 Support & Contact
 
-*No direct support provided.*
-```
+    Email: Don’t
+
+    Open an issue in the relevant repo instead. If it’s a rant make it entertaining.
