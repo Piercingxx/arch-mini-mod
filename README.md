@@ -43,11 +43,7 @@ Touch screen now works perfectly, screen rotation is sketchy. I dont use it so I
 Just run the script or from inside ./arch-mini-mod.sh hit "Apply KooTigers Touchscreen Driver".
 After just reboot and you're ready to go.
 
-## 📦 What This Does
-
-- Installs and enables a systemd service to load the KooTigers touchscreen driver
-- Ensures the touchscreen is powered, kernel modules are loaded, and the PCI adapter is reset if needed
-- Designed for use with Arch Linux (will work on other distros with minor tweaks)
+Check the [README](https://github.com/Piercingxx/arch-mini-mod/blob/main/resources/KooTigers-drivers/README.md) for more information.
 
 
 
@@ -64,8 +60,7 @@ Screen orientation is rotated 90° on Debian GNOME and Plasma, and does not auto
 
 Just run the `nuvision-tablet-drivers.sh` script. This script is also included in the whiptail menu of the main `arch-mini-mod.sh` installer.
 
-You can run the driver script independently of the rest of the setup process. These drivers will also work on Debian—just modify the script to use `apt` instead of `pacman` and the rest should work fine.
-
+Check the [README](https://github.com/Piercingxx/arch-mini-mod/blob/main/resources/NuVision-8in-tablet/README.md) for more information.
 
 
 
