@@ -203,4 +203,13 @@ builddir=$(pwd)
     echo "# Enabling Bluetooth and Printer services..."
     # Enable Bluetooth
         sudo systemctl start bluetooth
-        sudo systemctl enable bluetooth
+        systemctl enable bluetooth
+    # Enable Printer 
+        sudo pacman -S cups gutenprint cups-pdf gtk3-print-backends nmap net-tools cmake meson cpio --noconfirm
+        sudo systemctl enable cups.service
+        sudo systemctl start cups
+    # Printer Drivers
+        paru -S cnijfilter2-mg3600 --noconfirm #Canon mg3600 driver
+        #paru -S cndrvcups-lb --noconfirm # Canon D530 driver
+    # Add dialout to edit ZMK and VIA Keyboards
+        sudo usermod -aG uucp $USER

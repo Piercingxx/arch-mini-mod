@@ -86,7 +86,7 @@ function menu() {
         "Install Nvidia Drivers" \
         "Apply KooTigers Touchscreen Driver" \
         "Apply NuVision 8in Tablet Fixes" \
-        "Apply Surface Kernel" \
+        "Apply Microsoft Surface Kernel" \
         "Reboot System" \
         "Exit"
 }
@@ -155,7 +155,7 @@ while true; do
             cd "$builddir" || exit
             echo -e "${GREEN}NuVision 8in Tablet Fixes Applied Successfully! Please Reboot!${NC}"
             ;;
-        "Apply Surface Kernel")
+        "Apply Microsoft Surface Kernel")
             echo -e "${YELLOW}Microsoft Surface Kernel...${NC}"
             cd scripts || exit
             chmod +x ./surface-kernel.sh

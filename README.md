@@ -35,6 +35,21 @@ Options include minimal system install, Surface kernel, Hyprland, and reboot.
 
 
 
+## Linux on KooTigers Mini Pc
+Almost everything worked out of the box. Touch Screen and screen rotation both didnt work.
+Touch screen now works perfectly, screen rotation is sketchy. I dont use it so I turned it off in Gnome, and not a concern in Hyprland.
+
+**How to fix:**
+Just run the script or from inside ./arch-mini-mod.sh hit "Apply KooTigers Touchscreen Driver".
+After just reboot and you're ready to go.
+
+## 📦 What This Does
+
+- Installs and enables a systemd service to load the KooTigers touchscreen driver
+- Ensures the touchscreen is powered, kernel modules are loaded, and the PCI adapter is reset if needed
+- Designed for use with Arch Linux (will work on other distros with minor tweaks)
+
+
 
 
 ## Linux on NuVision 8" Tablet TM800W610L
@@ -60,8 +75,9 @@ You can run the driver script independently of the rest of the setup process. Th
 | Script                | Purpose                                 |
 |-----------------------|-----------------------------------------|
 | `scripts/apps.sh`     | Installs core desktop applications      |
-| `scripts/hyprland-install.sh` | Installs Hyprland and dependencies |
 | `scripts/nvidia.sh`   | Installs proprietary NVIDIA drivers     |
+| `kootigers-drivers.sh` | Copies drivers and applies patch          |
+| `nuvision-tablet-drivers.sh` |Copies drivers and applies patch     |
 | `scripts/Surface.sh`  | Installs Microsoft Surface kernel       |
 
 ---
