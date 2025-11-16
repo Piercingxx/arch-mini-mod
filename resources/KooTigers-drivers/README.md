@@ -7,9 +7,9 @@ Enable Goodix GDIX1002 touchscreen support for select tablets on Arch Linux.
 
 ## 📦 What This Does
 
-- Installs and enables a systemd service to load the KooTigers touchscreen driver
-- Ensures the touchscreen is powered, kernel modules are loaded, and the PCI adapter is reset if needed
-- Designed for use with Arch Linux (will work on other distros with minor tweaks)
+- Installs and enables a systemd service to load the KooTigers touchscreen driver.
+- Ensures the touchscreen is powered, kernel modules are loaded, and the PCI adapter is reset if needed.
+- Designed for use with Arch and Debian (will work on other distros with minor tweaks).
 
 ---
 
