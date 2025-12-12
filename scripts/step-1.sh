@@ -32,6 +32,18 @@ builddir=$(pwd)
 
 # Install dependencies
     echo "# Installing dependencies..."
+    sudo pacman -S trash-cli --noconfirm
+    sudo pacman -S fastfetch --noconfirm
+    sudo pacman -S tree --noconfirm
+    sudo pacman -S zoxide --noconfirm
+    sudo pacman -S bash-completion --noconfirm
+    sudo pacman -S starship --noconfirm
+    sudo pacman -S eza --noconfirm
+    sudo pacman -S bat --noconfirm
+    sudo pacman -S fzf --noconfirm
+    sudo pacman -S trash-cli --noconfirm
+    sudo pacman -S chafa --noconfirm
+    sudo pacman -S w3m --noconfirm
     sudo pacman -S reflector --noconfirm
     sudo pacman -S zip unzip gzip tar make wget tar fontconfig --noconfirm
     sudo pacman -Syu linux-firmware linux-firmware-brcm43752 linux-firmware-broadcom linux-firmware-realtek --noconfirm
@@ -46,6 +58,7 @@ builddir=$(pwd)
 
 # Installing more Depends
     echo "# Installing more dependencies..."
+    paru -S multitail jump-bin --noconfirm
     paru -S bluetuith --noconfirm
     paru -S dconf --noconfirm
     paru -S cpio cmake meson --nocofirm
