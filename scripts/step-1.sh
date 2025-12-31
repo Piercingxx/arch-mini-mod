@@ -49,6 +49,9 @@ builddir=$(pwd)
     sudo pacman -Syu linux-firmware linux-firmware-brcm43752 linux-firmware-broadcom linux-firmware-realtek --noconfirm
     sudo pacman -S bluez bluez-utils --noconfirm
     sudo pacman -S iw --noconfirm
+    sudo pacman -S tmux --noconfirm
+    sudo pacman -S sshpass --noconfirm
+    sudo pacman -S htop --noconfirm
 
 # Add Paru
     echo -e "${YELLOW}Installing Paru, Flatpak, & Dependencies...${NC}"
@@ -72,6 +75,8 @@ builddir=$(pwd)
     paru -S nautilus-renamer --noconfirm
     paru -S ulauncher --noconfirm
     paru -S proton-vpn-gtk-app --noconfirm
+    paru -S nvtop-git --noconfirm
+    paru -S lnav --noconfirm
     flatpak install flathub net.waterfox.waterfox -y
     flatpak install flathub md.obsidian.Obsidian -y
     flatpak install flathub org.libreoffice.LibreOffice -y
